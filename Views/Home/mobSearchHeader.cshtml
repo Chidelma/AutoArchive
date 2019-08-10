@@ -1,0 +1,160 @@
+﻿<div id="mobHeader" class="nav-down" style="top:0;width:100%;transition:top 0.2s ease-in-out;">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#303030;position:fixed;top:0;left:0;right:0;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <div id="divHeader" style="width:100%;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <input style="width:100%;font-size:larger;" type="text" name="ultSearch" data-toggle="collapse" data-target="#filters" class="form-control form-control-lg" placeholder="Search Auto Konnect" autocomplete="off"/>
+        </div>
+    </nav>
+
+    <div id="filters" class="collapse" style="position:fixed;background-color:#f7f7f9;width:100%;left:0;padding-left:15px;padding-right:15px;margin-top:-10px;">
+        <select type="text" name="searchYear" class="form-control" style="width:47.5%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <option value="">Year</option>
+            @for (int i = Convert.ToInt32(DateTime.Now.ToString("yyyy")) + 1; i >= 1990; i--)
+            {
+                <option value="@i">@i</option>
+            }
+        </select>
+
+        <select type="text" name="searchModel" class="form-control" style="width:47.5%;float:right;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <option value="">Make</option>
+            <option value="ACURA">Acura</option>
+            <option value="ALFA">Alfa Romeo</option>
+            <option value="AMC">AMC</option>
+            <option value="ASTON">Aston Martin</option>
+            <option value="AUDI">Audi</option>
+            <option value="BENTLEY">Bentley</option>
+            <option value="BMW">BMW</option>
+            <option value="BUGATTI">Bugatti</option>
+            <option value="BUICK">Buick</option>
+            <option value="CADILLAC">Cadillac</option>
+            <option value="CHEVROLET">Chevrolet</option>
+            <option value="CHRYSLER">Chrysler</option>
+            <option value="DAEWOO">Daewoo</option>
+            <option value="DATSUN">Datsun</option>
+            <option value="DELOREAN">DeLorean</option>
+            <option value="DODGE">Dodge</option>
+            <option value="EAGLE">Eagle</option>
+            <option value="FERRARI">Ferrari</option>
+            <option value="FIAT">FIAT</option>
+            <option value="FISKER">Fisker</option>
+            <option value="FORD">Ford</option>
+            <option value="FREIGHTLINER">Freightliner</option>
+            <option value="GENESIS">Genesis</option>
+            <option value="GEO">Geo</option>
+            <option value="GMC">GMC</option>
+            <option value="HONDA">Honda</option>
+            <option value="HUMMER">HUMMER</option>
+            <option value="HYUNDAI">Hyundai</option>
+            <option value="INFINITI">INFINITI</option>
+            <option value="ISUZU">Isuzu</option>
+            <option value="JAGUAR">Jaguar</option>
+            <option value="JEEP">Jeep</option>
+            <option value="KIA">Kia</option>
+            <option value="LAMBORGINI">Lamborghini</option>
+            <option value="LAND ROVER">Land Rover</option>
+            <option value="LEXUS">Lexus</option>
+            <option value="LINCOLN">Lincoln</option>
+            <option value="LOTUS">Lotus</option>
+            <option value="MASERATI">Maserati</option>
+            <option value="MAYBACH">Maybach</option>
+            <option value="MAZDA">Mazda</option>
+            <option value="MCLAREN">McLaren</option>
+            <option value="MERCEDES BENZ">Mercedes Benz</option>
+            <option value="MERCURY">Mercury</option>
+            <option value="MINI">MINI</option>
+            <option value="MITSUBISHI">Mitsubishi</option>
+            <option value="NISSAN">Nissan</option>
+            <option value="OLDSMOBILE">Oldsmobile</option>
+            <option value="PLYMOUTH">Plymouth</option>
+            <option value="PONTIAC">Pontiac</option>
+            <option value="PORSCHE">Porsche</option>
+            <option value="RAM">RAM</option>
+            <option value="ROLLS ROYCE">Rolls-Royce</option>
+            <option value="SAAB">Saab</option>
+            <option value="SATURN">Saturn</option>
+            <option value="SCION">Scion</option>
+            <option value="SMART">smart</option>
+            <option value="SRT">SRT</option>
+            <option value="SUB">Subaru</option>
+            <option value="SUZUKI">Suzuki</option>
+            <option value="TESLA">Tesla</option>
+            <option value="TOYOTA">Toyota</option>
+            <option value="VOLKSWAGEN">Volkswagen</option>
+            <option value="VOLVO">Volvo</option>
+            <option value="YAMAHA">Yamaha</option>
+            <option value="YUGO">Yugo</option>
+        </select>
+
+        <select type="text" name="searchCyl" class="form-control" style="width:47.5%;float:left;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <option value="">CYL</option>
+            <option value="A">A</option>
+            <option value="CC">CC</option>
+            <option value="S">S</option>
+            <option value="None">None</option>
+        </select>
+
+        <select type="text" name="searchStatus" class="form-control" style="width:47.5%;float:right;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <option value="">Status</option>
+            <option value="Salvageable">Salvageable</option>
+            <option value="Normal">Normal</option>
+            <option value="Irreparable">Irreparable</option>
+            <option value="Writeoff (Hail)">Writeoff (Hail)</option>
+            <option value="Writeoff (Stolen)">Writeoff (Stolen)</option>
+            <option value="Rebuilt">Rebuilt</option>
+            <option value="Writeoff (Other)">Writeoff (Other)</option>
+        </select>
+
+        <input type="text" name="minBid" class="form-control" placeholder="Min Bid" style="width:47.5%;float:left;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+
+        <input type="text" name="maxBid" class="form-control" placeholder="Max Bid" style="width:47.5%;float:right;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+
+        <input type="text" name="minMile" class="form-control" placeholder="Min Mileage" style="width:47.5%;float:left;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+
+        <input type="text" name="maxMile" class="form-control" placeholder="Max Mileage" style="width:47.5%;float:right;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" />
+
+        <table style="width:100%">
+            <tr>
+                <td style="width:100%">
+                    <input style="width:100%;text-align:center;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" type="text" name="searchDate" onfocus="(this.type='date')" class="form-control" placeholder="Auction Date">
+                </td>
+            </tr>
+        </table>
+
+        <table style="width:100%;">
+            <tr>
+                <td style="width:10%">
+                    <input type="checkbox" id="exampleCheck1" name="hasImages" style="width:20px;float:right">
+                </td>
+                <td style="width:40%">
+                    <label style="padding-top:15px;float:left">Images Only</label>
+                </td>
+                <td style="width:10%">
+                    <input type="checkbox" id="exampleCheck1" name="hasDuplicate" style="width:20px;float:right">
+                </td>
+                <td style="width:40%">
+                    <label style="padding-top:15px;float:left">Has Auction History</label>
+                </td>
+            </tr>
+            <tr>
+                <td style="width:10%">
+                    <input type="radio" id="exampleCheck1" value="unavailable" name="isPending" style="width:20px;float:right">
+                </td>
+                <td style="width:40%">
+                    <label style="padding-top:15px;float:left">Pending Bids</label>
+                </td>
+                <td style="width:10%">
+                    <input type="radio" id="exampleCheck1" value="available" name="isPending" style="width:20px;float:right">
+                </td>
+                <td style="width:40%">
+                    <label style="padding-top:15px;float:left">No Pending Bids</label>
+                </td>
+            </tr>
+        </table>
+        <table style="width:100%" height="50">
+            <tr>
+                <td align="center">
+                    <button id="mobSubBtn" class="btn btn-success" type="submit" style="border-radius:25px;width:50%;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">Search</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

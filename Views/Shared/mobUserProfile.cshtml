@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "mobUserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="mobSearchHeader">
+    @using (Html.BeginForm("index", "home", FormMethod.Get, null))
+    {
+        @await Html.PartialAsync("~/Views/Home/mobSearchHeader.cshtml")
+    }
+</div>
+
+@if (User.Identity.IsAuthenticated)
+{
+    ViewBag.Name = User.Claims.FirstOrDefault(c => c.Type.Equals("cognito:username")).Value;
+
+    ViewBag.Group = User.Claims.FirstOrDefault(c => c.Type.Equals("cognito:groups")).Value;
+
+    <h2>Hi @ViewBag.Name</h2>
+    
+    <a asp-area="AzureADB2C" asp-controller="Account" asp-action="EditProfile"><buttton class="btn btn-primary">Edit Profile</buttton></a>
+
+    <a asp-area="AzureADB2C" asp-controller="Account" asp-action="SignOut"><buttton class="btn btn-primary">Edit Profile</buttton></a>
+}
+
+

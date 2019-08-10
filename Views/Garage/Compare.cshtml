@@ -1,0 +1,128 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@if (ViewBag.compCount > 0)
+{
+    <table style="float:left;font-size:13px;margin-top:127px;" width="140" height="211" border="0">
+        <tr style="border-bottom:1px solid black;font-weight:bold;">
+            <td align="center">
+                <span id="makeKey"><i id="makeRem" class="fa fa-remove" style="color:red"></i> Make <i id="makeChk" class="fa fa-check" style="color:green;display:none;"></i></span>
+            </td>
+        </tr>
+        <tr style="border-bottom:1px solid black;font-weight:bold;">
+            <td align="center">
+                <span id="yearKey"><i id="yearRem" class="fa fa-remove" style="color:red"></i> Year <i id="yearChk" class="fa fa-check" style="color:green;display:none;"></i></span>
+            </td>
+        </tr>
+        <tr style="border-bottom:1px solid black;font-weight:bold;">
+            <td align="center">
+                <span id="vinKey"><i id="vinRem" class="fa fa-remove" style="color:red"></i> Vin <i id="vinChk" class="fa fa-check" style="color:green;display:none;"></i></span>
+            </td>
+        </tr>
+        <tr style="border-bottom:1px solid black;font-weight:bold;">
+            <td align="center">
+                <span id="cylKey"><i id="cylRem" class="fa fa-remove" style="color:red"></i> Cyl <i id="cylChk" class="fa fa-check" style="color:green;display:none;"></i></span>
+            </td>
+        </tr>
+        <tr style="border-bottom:1px solid black;font-weight:bold;">
+            <td align="center">
+                <span id="statusKey"><i id="statusRem" class="fa fa-remove" style="color:red"></i> Status <i id="statusChk" class="fa fa-check" style="color:green;display:none;"></i></span>
+            </td>
+        </tr>
+        <tr style="border-bottom:1px solid black;font-weight:bold;">
+            <td align="center">
+                <span id="mileKey"><i id="mileRem" class="fa fa-remove" style="color:red"></i> Mileage <i id="mileChk" class="fa fa-check" style="color:green;display:none;"></i></span>
+            </td>
+        </tr>
+        <tr style="border-bottom:1px solid black;font-weight:bold;">
+            <td align="center">
+                <span id="dateKey"><i id="dateRem" class="fa fa-remove" style="color:red"></i> Auction Date <i id="dateChk" class="fa fa-check" style="color:green;display:none;"></i></span>
+            </td>
+        </tr>
+        <tr style="border-bottom:1px solid black;font-weight:bold;">
+            <td align="center">
+                <span id="bidKey"><i id="bidRem" class="fa fa-remove" style="color:red"></i> Final Bid <i id="bidChk" class="fa fa-check" style="color:green;display:none;"></i></span>
+            </td>
+        </tr>
+    </table>
+
+    @foreach (var item in Model.Compare)
+    {
+        <table style="float:left;font-size:13px" width="155" height="300" border="0" cellpadding="3">
+            <tr>
+                <td align="center">
+                    @if (item.FirstImage != null)
+                    {
+                        <a asp-controller="Analytic" asp-action="Index" asp-route-vin="@item.Vin" asp-route-model="@item.Model" asp-route-year="@item.Year">
+                            <img class="responsive"
+                                 src="data:image/jpg;base64,@(Convert.ToBase64String(item.FirstImage))"
+                                 style="width:100%;height:120px;background-color:transparent;" />
+                        </a>
+                    }
+                    else
+                    {
+                        <img class="responsive"
+                             src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+                             style="width:75%;height:120px;" />
+                    }
+                </td>
+            </tr>
+            <tr style="border-bottom:1px solid black;">
+                <td align="center">
+                    <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:155px">
+                        <span class="makeVal">@item.Model</span>
+                    </div>
+                </td>
+            </tr>
+            <tr style="border-bottom:1px solid black;">
+                <td align="center">
+                    <span class="yearVal">@item.Year</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="border-bottom:1px solid black;">
+                    <span class="vinVal">@item.Vin</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="border-bottom:1px solid black;">
+                    <span class="cylVal">@item.Cyl</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="border-bottom:1px solid black;">
+                    <span class="statusVal">@item.Status</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="border-bottom:1px solid black;">
+                    <span class="mileVal">@item.MileageKm km</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="border-bottom:1px solid black;">
+                    <span class="dateVal">@item.AuctionDate</span>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="border-bottom:1px solid black;">
+                    @if (item.BidAmountC != null)
+                    {
+                        <span class="bidVal" style="color:green;">C$@item.BidAmountC</span>
+                    }
+                    else
+                    {
+                        <span class="bidVal">Pending</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <a asp-area="" asp-controller="Garage" asp-action="Delete" asp-route-id="@item.Id" asp-route-type="compare"><button class="btn btn-sm btn-light" style="outline:none;width:100%;"><i class="fa fa-remove"></i>&nbsp;Remove</button></a>
+                </td>
+            </tr>
+        </table>
+    }
+}
+<table style="width:100%;"></table>

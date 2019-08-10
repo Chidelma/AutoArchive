@@ -1,6 +1,24 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+@keyframes loader {
+    0% {
+        width:0%;
+    }
+    25% {
+        width:25%;
+    }
+    50% {
+        width:50%;
+    }
+    75% {
+        width:75%;
+    }
+    100% {
+        width:100%;
+    }
+}
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -42,9 +60,17 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
 }
+
+body.modal-open {
+    overflow: hidden;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -53,4 +79,249 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
   line-height: 60px; /* Vertically center the text there */
+}
+
+.yt-loader {
+    width: 100%;
+    height: 5px;
+    background-color: #7c7c7c;
+    z-index: 99;
+    position: fixed;
+    top: 0;
+    animation: loader 20s ease-in-out;
+}
+
+@media screen and (max-width: 4096px) {
+
+    #mobSearchHeader {
+        display: none;
+    }
+
+    #mobLayout {
+        display: none;
+    }
+
+    #mobLoginPartial {
+        display: none;
+    }
+
+    .tableResults {
+        opacity: 1;
+        float: left;
+        width: 45%;
+    }
+
+    .images {
+        width: 33.33%;
+    }
+
+    .title {
+        font-size: 15px;
+    }
+
+    .details1 {
+        font-size: 13px;
+        width: 33.33%;
+        text-indent: 10px;
+    }
+
+    .details2 {
+        font-size: 13px;
+        width: 33.33%;
+        text-indent: 50px;
+    }
+
+    .auctDate {
+        margin-left: 50px;
+    }
+
+    .mobOptions {
+        display: none;
+    }
+
+    .Wedge {
+        width: 10%;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    /* SVG spinner icon animation */
+
+    .demo:empty {
+        margin: auto;
+        margin-top:150px;
+        width: 350px;
+        height: 1200px; /* change height to see repeat-y behavior */
+        background-image: radial-gradient( circle 50px at 50px 50px, lightgray 99%, transparent 0 ), linear-gradient( 100deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 80% ), linear-gradient( lightgray 20px, transparent 0 ), linear-gradient( lightgray 20px, transparent 0 ), linear-gradient( lightgray 20px, transparent 0 );
+        background-repeat: repeat-y;
+        background-size: 100px 200px, /* circle */
+        50px 200px, /* highlight */
+        150px 200px, 350px 200px, 300px 200px, 250px 200px;
+        background-position: 0 0, /* circle */
+        0 0, /* highlight */
+        120px 0, 120px 40px, 120px 80px, 120px 120px;
+        animation: shine 1s infinite;
+    }
+
+    @keyframes shine {
+        to {
+            background-position: 0 0, 100% 0, /* move highlight to right */
+            120px 0, 120px 40px, 120px 80px, 120px 120px;
+        }
+    }
+
+    #backAnalytik {
+        display: none;
+    }
+
+    .tableResults {
+        float: left;
+        margin-left: 2%;
+        width: 45%;
+        margin-bottom: 20px;
+    }
+
+    .images {
+        width: 40%;
+    }
+
+    #img00 {
+        display: none;
+    }
+
+    .title {
+        font-size: 15px;
+    }
+
+    .details1 {
+        font-size: 10px;
+        width: 40%;
+        text-indent: 10px;
+    }
+
+    .middle {
+        display: none;
+    }
+
+    .details2 {
+        font-size: 10px;
+        width: 20%;
+        text-indent: unset;
+    }
+
+    .auctDate {
+        margin-left: unset;
+    }
+
+    .mobOptions {
+        display: block;
+    }
+
+    .webOptions {
+        display: none;
+    }
+
+    .Wedge {
+        width: 2%;
+    }
+
+    #webLayout {
+        display: none;
+    }
+
+    #mobLayout {
+        display: block;
+    }
+
+    #webLoginPartial {
+        display: none;
+    }
+
+    #mobLoginPartial {
+        display: block;
+    }
+
+    #mySidepanel {
+        width: 0;
+        position: fixed;
+        z-index: -1;
+        height: 0;
+        bottom: 10px;
+        right: 0;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        opacity: 1;
+    }
+
+    #mySidepanel a {
+        padding: 0px 0px 8px 0px;
+        text-decoration: none;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    #mySidepanel a:hover {
+        color: #f1f1f1;
+    }
+
+    #webSearchHeader {
+        display: none;
+    }
+
+    #mobSearchHeader {
+        display: block;
+    }
+
+    #filters {
+        margin-top: 30px;
+    }
+
+    #backHome {
+        display: none;
+    }
+
+    #numResults {
+        text-indent: unset;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+    .tableResults {
+        float: unset;
+        margin-left: unset;
+        margin: 0 auto;
+        width: 350px;
+    }
+
+    .images {
+        width: 40%;
+    }
+
+    .title {
+        font-size: 15px;
+    }
+
+    .details1 {
+        font-size: 10px;
+        width: 40%;
+        text-indent: 10px;
+    }
+
+    .details2 {
+        font-size: 10px;
+        width: 20%;
+        text-indent: unset;
+    }
+
+    .Wedge {
+        display: none;
+    }
+
+    #filters {
+        margin-top: 20px;
+    }
 }

@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div id="acctInfo" class="collapse" style="z-index:3;margin-top:-15px;width:30%;background-color:#303030;right:0;padding:1%;border-radius:0px 0px 0px 25px;position:fixed;color:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+
+    <h4 class="font-weight-light"><b>Hello @User.Claims.FirstOrDefault(c => c.Type.Equals("name")).Value.ToString().Split(" ")[0]!</b></h4>
+
+    <p style="padding-top:20px"><b>Email:&nbsp;</b>@User.Claims.FirstOrDefault(c => c.Type.Contains("emailaddress")).Value</p>
+
+    @if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "ca-central-1_PcdhdvUaa_KnctID"))
+    {
+        if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Admin"))
+        {
+        <p><b>Role:&nbsp;</b>Admin</p>
+        }
+        else if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Developer"))
+        {
+        <p><b>Role:&nbsp;</b>Developer</p>
+        }
+        else if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Data"))
+        {
+        <p><b>Role:&nbsp;</b>Data Operations</p>
+        }
+        else if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Support"))
+        {
+        <p><b>Role:&nbsp;</b>Customer Support</p>
+        }
+    }
+    <p><b>No. of Garage Vehicles:&nbsp;</b>@ViewBag.cartCount</p>
+    <p><b>Knct Points:&nbsp;</b>Coming Soon!</p>
+    <a asp-area="" asp-controller="Home" asp-action="Privacy"><button class="btn btn-warning btn-sm" style="border-radius:25px;float:right;margin-top:10px;"><i class="fa fa-lock"></i>&nbsp;Privacy Policy</button></a>
+    <button id="acctClose" class="btn btn-danger btn-sm" style="margin-top:10px;float:left;border-radius:25px"><i class="fa fa-times"></i>&nbsp;Close</button>
+</div>
+
+<div id="contactForm" class="collapse" style="z-index:3;margin-top:-15px;width:30%;background-color:#303030;right:0;padding:1%;border-radius:0px 0px 0px 25px;position:fixed;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+    <form method="post" enctype="multipart/form-data" asp-controller="Account" asp-action="EmailForm">
+        <span id="succMsg" style="display:none;color:#28a745;font-size:medium;">Message Sent Successfully!</span>
+        <span id="failMsg" style="display:none;color:#dc3545;font-size:medium;">Input or Selection Missing!</span>
+        <table style="color:white;width:100%">
+            <tr>
+                <td>
+                    Please choose one:
+                </td>
+                <td>
+                    <input id="formSel" type="radio" name="selection" value="support" /> Support<br>
+                </td>
+                <td>
+                    <input id="formSel" type="radio" name="selection" value="feedback" /> Feedback<br>
+                </td>
+            </tr>
+        </table>
+        <input id="formSubj" type="text" class="form-control" name="formSubj" placeholder="Subject" style="margin-top:10px" autocomplete="off" />
+        <textarea id="formDesc" rows="4" class="form-control" name="formDesc" placeholder="What do you need help with?" style="margin-top:10px"></textarea>
+        <button id="cntClose" class="btn btn-danger btn-sm" style="margin-top:10px;float:left;border-radius:25px"><i class="fa fa-times"></i>&nbsp;Close</button>
+        <button id="cntSend" class="btn btn-success btn-sm" style="margin-top:10px;float:right;border-radius:25px"><i class="fa fa-envelope"></i>&nbsp;Send</button>
+    </form>
+</div>
+
+@if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Admin") || ((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Data") || ((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Developer"))
+{
+    <div id="UploadForm" class="collapse" style="z-index:3;margin-top:-15px;width:30%;background-color:#303030;right:0;padding:1%;border-radius:0px 0px 0px 25px;position:fixed;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+        <form method="post" enctype="multipart/form-data" asp-controller="Upload" asp-action="UploadFiles">
+            <span id="succUpload" style="display:none;color:#28a745;font-size:medium;">File(s) Uploaded Successfully!</span>
+            <span id="failUpload" style="display:none;color:#dc3545;font-size:medium;">File or Selection Missing!</span>
+            <table style="color:white;width:100%">
+                <tr>
+                    <td>
+                        Please choose one:
+                    </td>
+                    <td>
+                        <input id="formFileSel" type="radio" name="selection" value="csv" /> CSV<br>
+                    </td>
+                    <td>
+                        <input id="formFileSel" type="radio" name="selection" value="images" /> Images<br>
+                    </td>
+                </tr>
+            </table>
+            <div style="width:100%;color:white;margin-top:10px">
+                <input id="Files" type="file" class="form-control-file" name="Files" multiple style="width:100%" />
+                <button id="submitUpload" class="btn btn-sm btn-primary" style="border-radius:25px;float:right;margin-top:10px" type="submit"><i class="fa fa-upload"></i>&nbsp;Upload</button>
+                <button id="uploadClose" class="btn btn-danger btn-sm" style="margin-top:10px;float:left;border-radius:25px"><i class="fa fa-times"></i>&nbsp;Close</button>
+            </div>
+        </form>
+    </div>
+}

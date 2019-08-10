@@ -2,55 +2,274 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - AUTO_ARCHIVE</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
+    <title>@ViewData["Title"] - Auto Konnect</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
               crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+              integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" />
     </environment>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/images.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/garage.css" />
+    <link rel="stylesheet" href="~/css/analytic.css" />
+    <link rel="manifest" href="~/manifest.json" />
+    <link rel="apple-touch-icon" href="~/images/LOGO.png" />
+    <link href="~/images/iphone5_splash.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="~/images/iphone6_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="~/images/iphoneplus_splash.png" media="(device-width: 621px) and (device-height: 1104px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+    <link href="~/images/iphonex_splash.png" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+    <link href="~/images/iphonexr_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="~/images/iphonexsmax_splash.png" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" rel="apple-touch-startup-image" />
+    <link href="~/images/ipad_splash.png" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="~/images/ipadpro1_splash.png" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="~/images/ipadpro3_splash.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <link href="~/images/ipadpro2_splash.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#303030">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8699580268660717",
+            enable_page_level_ads: true
+        });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"></script>
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AUTO_ARCHIVE</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+<body id="bodyLayout" style="padding-top:unset;padding-bottom:unset;width:100%;background-color:#f7f7f9;">
+    <div id="loader" class="yt-loader"></div>
+
+    <amp-auto-ads type="adsense" data-ad-client="ca-pub-8699580268660717"></amp-auto-ads>
+
+    <div class="container" id="renderBody">
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div id="webSearchHeader">
+                <form method="get" asp-controller="home" asp-action="Results">
+                    @await Html.PartialAsync("~/Views/Home/SearchHeader.cshtml")
+                </form>
+                @await Html.PartialAsync("_Account")
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <partial name="_CookieConsentPartial" />
-        <main role="main" class="pb-3">
+
+            <div id="mobSearchHeader">
+                <form method="get" asp-controller="home" asp-action="Results">
+                    @await Html.PartialAsync("~/Views/Home/mobSearchHeader.cshtml")
+                </form>
+            </div>
+        }
+
+        <main role="main" class="pb-3" style="margin-top:90px;">
             @RenderBody()
         </main>
+
+        <partial name="_CookieConsentPartial" />
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2019 - AUTO_ARCHIVE - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="demo"></div>
+    
+    <div id="webLayout">
+        <footer style="background-color:#303030;position:fixed;left:0;bottom:0;width:100%;height:30px;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+            <div style="margin:auto 0px">
+                <h6 style="color:white;text-align:center;margin-top:3px">Designed and Developed by Exade IT Inc</h6>
+            </div>
+        </footer>
+    </div>
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div id="mobLayout">
+            <footer id="mobFooter" style="background-color:#303030;position:fixed;width:100%;height:70px;padding:5px 0px 5px 0px;left:0;bottom:0;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <div id="menu" class="navbar">
+
+                    <table id="backTable" onclick="window.history.back()" style="margin-top:3px;width:20%" border="0">
+                        <tr>
+                            <td align="center">
+                                <i id="mobBackBtn" class="fa fa-chevron-circle-left" style="font-size:x-large;color:#7c7c7c"></i>
+                                <label style="color:white;font-size:12px;font-size:x-small;display:block">Back</label>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table id="homeTable" style="margin-top:-5px;width:20%" border="0">
+                        <tr>
+                            <td align="center">
+                                <i id="mobHomeBtn" class="fa fa-home" style="font-size:x-large;color:#7c7c7c"></i>
+                                <span style="color:white;font-size:12px;font-size:x-small;display:block">Home</span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table id="analytikTable" style="margin-top:-5px;display:none;width:20%;" border="0">
+                        <tr>
+                            <td align="center">
+                                <i id="mobAnaltikBtn" class="fa  fa-area-chart" style="font-size:x-large;color:white"></i>
+                                <span style="color:white;font-size:12px;font-size:x-small;display:block">Analytics</span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table id="garageTable" style="margin-top:-5px;width:20%" border="0">
+                        <tr>
+                            <td align="center">
+                                @if (ViewBag.filtCount != 0)
+                                {
+                                    <i id="mobGarageBtn" class="fa fa-car" style="font-size:x-large;color:#7c7c7c"></i>
+                                    <i id="time" class="badge badge-info" style="z-index:5;float:right;position:absolute">@ViewBag.filtCount</i>
+                                    <span style="color:white;font-size:x-small;display:block">Garage</span>
+                                }
+                                else
+                                {
+                                    <i id="mobGarageBtn" class="fa fa-car" style="font-size:x-large;color:#7c7c7c"></i>
+                                    <i id="time" class="badge badge-info" style="z-index:5;float:right;position:absolute">0</i>
+                                    <span style="color:white;font-size:x-small;display:block;">Garage</span>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="margin-top:-5px;width:20%" border="0">
+                        <tr>
+                            <td align="center">
+                                <div id="mySidepanel" style="background-color:#303030;">
+
+                                    <a href="#" style="color:white;font-size:25px;width:100%;text-align:center">Hello @User.Claims.FirstOrDefault(c => c.Type.Equals("name")).Value.ToString().Split(" ")[0]!</a>
+
+                                    <button id="mobProfileBtn" class="btn btn-light" style="width:50%;border-radius:25px;margin-top:15px"><i class="fa fa-user"></i>&nbsp;Profile</button>
+
+                                    <div id="mobAcctInfo" style="color:white;display:none;padding-left:5%;padding-right:5%">
+
+                                        <p style="padding-top:20px"><b>Email:&nbsp;</b>@User.Claims.FirstOrDefault(c => c.Type.Contains("emailaddress")).Value</p>
+
+                                        @if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "ca-central-1_PcdhdvUaa_KnctID"))
+                                        {
+                                            if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Admin"))
+                                            {
+                                                <p><b>Role:&nbsp;</b>Admin</p>
+                                            }
+                                            else if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Developer"))
+                                            {
+                                                <p><b>Role:&nbsp;</b>Developer</p>
+                                            }
+                                            else if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Data"))
+                                            {
+                                                <p><b>Role:&nbsp;</b>Data Operations</p>
+                                            }
+                                            else if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Support"))
+                                            {
+                                                <p><b>Role:&nbsp;</b>Customer Support</p>
+                                            }
+                                        }
+
+                                        <p><b>No. of Garage Vehicles:&nbsp;</b>@ViewBag.filtCount</p>
+
+                                        <p><b>Knct Points:&nbsp;</b>Coming Soon!</p>
+
+                                        <table>
+                                            <tr>
+                                                <td align="center">
+                                                    <a asp-area="" asp-controller="Home" asp-action="Privacy"><button class="btn btn-warning btn-sm" style="border-radius:25px;"><i class="fa fa-lock"></i>&nbsp;Privacy Poilcy</button></a>      
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    @if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "ca-central-1_PcdhdvUaa_KnctID"))
+                                    {
+                                        <a href="https://autokonnect.awsapps.com/mail" target="_blank"><button class="btn btn-light" style="width:50%;border-radius:25px;margin-top:20px"><i class="fa fa-envelope"></i>&nbsp;Email</button></a>
+                                    }
+                                    else
+                                    {
+                                        <button id="mobContactBtn" class="btn btn-light" style="width:50%;border-radius:25px;margin-top:20px"><i class="fa fa-envelope"></i>&nbsp;Contact Us</button>
+                                    }
+
+                                    <div id="mobContactForm" style="display:none;padding-left:5%;padding-right:5%;margin-top:15px">
+                                        <form method="post" enctype="multipart/form-data" asp-controller="Account" asp-action="EmailForm">
+                                            <span id="mobSuccMsg" style="display:none;text-align:center;color:#28a745;font-size:larger">Message Sent Successfully!</span>
+                                            <span id="mobFailMsg" style="display:none;text-align:center;color:#dc3545;font-size:larger">Input or Selection Missing!</span>
+                                            <table style="color:white;width:100%">
+                                                <tr>
+                                                    <td>
+                                                        Please choose one:
+                                                    </td>
+                                                    <td>
+                                                        <input id="mobFormSel" type="radio" name="selection" value="support" /> Support<br>
+                                                    </td>
+                                                    <td>
+                                                        <input id="mobFormSel" type="radio" name="selection" value="feedback" /> Feedback<br>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <input id="mobFormSubj" type="text" class="form-control" name="formSubj" placeholder="Subject" style="margin-top:10px" autocomplete="off" />
+                                            <textarea id="mobFormDesc" rows="4" class="form-control" name="formDesc" placeholder="What do you need help with?" style="margin-top:10px"></textarea>
+
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <button id="mobSendBtn" class="btn btn-success btn-sm" style="margin-top:10px;border-radius:25px" type="submit"><i class="fa fa-envelope"></i>&nbsp;Send</button>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </form>
+                                    </div>
+
+                                    @if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Admin") || ((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Data") || ((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Developer"))
+                                    {
+                                        <button id="mobUploadBtn" class="btn btn-light" style="width:50%;border-radius:25px;margin-top:20px"><i class="fa fa-upload"></i>&nbsp;Upload</button>
+
+                                        <div id="mobUploadForm" style="display:none;padding-left:5%;padding-right:5%;margin-top:15px">
+                                            <form method="post" enctype="multipart/form-data" asp-controller="Upload" asp-action="UploadFiles">
+                                                <span id="mobSuccUpload" style="display:none;color:#28a745;font-size:medium;">File(s) Uploaded Successfully!</span>
+                                                <span id="mobFailUpload" style="display:none;color:#dc3545;font-size:medium;">File or Selection Missing!</span>
+                                                <table style="color:white;width:100%">
+                                                    <tr>
+                                                        <td>
+                                                            Please choose one:
+                                                        </td>
+                                                        <td>
+                                                            <input id="mobFormFileSel" type="radio" name="selection" value="csv" /> CSV<br>
+                                                        </td>
+                                                        <td>
+                                                            <input id="mobFormFileSel" type="radio" name="selection" value="images" /> Images<br>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                                <div style="width:100%;color:white;margin-top:10px">
+                                                    <input id="mobFiles" type="file" class="form-control-file" name="Files" multiple style="width:100%" />
+
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <button id="mobSubmitUpload" class="btn btn-sm btn-primary" style="border-radius:25px;float:right;margin-top:10px" type="submit"><i class="fa fa-upload"></i>&nbsp;Upload</button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                    }
+
+                                    <button id="mobLogoutBtn" class="btn btn-light" style="width:50%;border-radius:25px;margin-top:20px"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
+                                </div>
+
+                                <i id="mobAcctBtn" onclick="toggleNav()" class="fa fa-user" style="font-size:x-large;color:#7c7c7c"></i>
+                                <span style="color:white;font-size:x-small;display:block">Account</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </footer>
         </div>
-    </footer>
+    }
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
@@ -63,14 +282,17 @@
                 crossorigin="anonymous"
                 integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=">
         </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
                 crossorigin="anonymous"
-                integrity="sha384-xrRywqdh3PHs8keKZN+8zzc5TX0GRTLCcmivcbNJWm2rs5C8PRhcEn3czEjhAO9o">
+                integrity="sha256-E/V4cWE4qvAeO5MOhjtGtqDzPndRO1LBk8lJ/PR7CA4=">
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/analytic.js" asp-append-version="true"></script>
+    <script src="~/js/garage.js" asp-append-version="true"></script>
+    <script src="~/js/images.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

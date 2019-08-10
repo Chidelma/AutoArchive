@@ -1,0 +1,31 @@
+﻿@media screen and (max-width: 4096px) {
+    #statsTable {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+
+    #backAnalytik {
+        display:none;
+    }
+
+    #statsTable {
+        margin-left: 2%;
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+    #backAnalytik {
+        display: none;
+    }
+
+    #statsTable {
+        float: unset;
+        margin-left: unset;
+        margin: 0 auto;
+        width: 350px;
+    }
+}

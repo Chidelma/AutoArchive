@@ -1,0 +1,45 @@
+﻿@media screen and (max-width: 4096px) {
+
+    #mobSearchHeader {
+        display:none;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+
+    #webSearchHeader {
+        display: none;
+    }
+
+    #mobSearchHeader {
+        display: block;
+    }
+
+    #filters {
+        margin-top:30px;
+    }
+
+    #backHome {
+        display:none;
+    }
+
+    #numResults {
+        text-indent:unset;
+        text-align:center;
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+    #webSearchHeader {
+        display: none;
+    }
+
+    #mobSearchHeader {
+        display: block;
+    }
+
+    #filters {
+        margin-top: 20px;
+    }
+}

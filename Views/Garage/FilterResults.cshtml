@@ -1,0 +1,113 @@
+﻿<div id="webFilterResults" style="min-height:100%;">
+    @{
+        var counter = 0;
+    }
+
+    @foreach (var item in Model.AUTO)
+    {
+        <a asp-controller="Analytic" asp-action="Index" asp-route-vin="@item.Vin" asp-route-model="@item.Model" asp-route-year="@item.Year" style="color:black;text-decoration:none;">
+            <table class="tableResults" height="150" style="border-radius:5px;background-color:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:25px" cellpadding="2">
+                <tr>
+                    <td colspan="3" class="title">
+                        <div style="text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:350px;">
+                            <span><b>@item.Year @item.Model</b></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="detailsRow">
+                    <td class="images">
+                        <div class="middle" style="opacity:0;font-size:xx-large;position:absolute;text-align:center;width:500px;height:120px;">
+                            <div style="margin-top:30px">
+                                <i class="text fa fa-area-chart"></i>&nbsp<span>View Analytics</span>
+                            </div>
+                        </div>
+                        <div>
+                            @if (item.FirstImage != null)
+                            {
+                            <img class="responsive"
+                                 src="data:image/jpg;base64,@(Convert.ToBase64String(item.FirstImage))"
+                                 style="width:100%;height:100%;" />
+                            }
+                            else
+                            {
+                            <img class="responsive"
+                                 src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+                                 style="width:75%;height:75%;margin-left:12.5%;" />
+                            }
+                        </div>
+                    </td>
+                    <td class="details1">
+                        <span style="color:#7c7c7c">VIN</span>
+                        <span style="display:block"><b>@item.Vin</b></span>
+
+                        <span style="color:#7c7c7c;margin-left:10px">CYL</span>
+                        <span style="display:block"><b>@item.Cyl</b></span>
+
+                        <span style="color:#7c7c7c;margin-left:10px">Status</span>
+                        <span style="display:block"><b>@item.Status</b></span>
+                    </td>
+                    <td class="details2">
+                        @if (item.BidAmountC != null)
+                        {
+                        <span style="display:block;width:100%">
+                            <span style="color:#7c7c7c;">Final Bid</span>
+                            <span style="color:green;display:block;"><b>C$@item.BidAmountC</b></span>
+                        </span>
+                        }
+                        else
+                        {
+                        <span style="color:#7c7c7c;">Final Bid</span>
+                        <span style="display:block"><b>Pending</b></span>
+                        }
+
+                        <span style="color:#7c7c7c;display:block;">Mileage</span>
+                        <span style="display:block"><b>@item.MileageKm km</b></span>
+
+                        @if (item.BidAmountC != null)
+                        {
+                            <span class="auctDate" style="color:#7c7c7c;">Date Sold</span>
+                        }
+                        else
+                        {
+                            <span class="auctDate" style="color:#7c7c7c;">Date</span>
+                        }
+                        <span style="display:block"><b>@item.AuctionDate</b></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <div class="webOptions">
+                            @if (ViewBag.compCount >= 6)
+                            {
+                                <a asp-controller="Garage" asp-action="Delete" asp-route-id="@item.Id" asp-route-type="garage"><button class="btn btn-light btn-sm" style="width:100%;outline:none;"><i class="fa fa-remove"></i>&nbsp;Remove</button></a>
+                            }
+                            else
+                            {
+                                <a asp-controller="Garage" asp-action="addToGarage" asp-route-id="@item.Id" asp-route-type="compare"><button class="btn btn-light btn-sm" style="width:49.9%;outline:none;float:left"><i class="fa fa-balance-scale"></i>&nbsp;Add For Comparsion</button></a>
+                                <a asp-controller="Garage" asp-action="Delete" asp-route-id="@item.Id" asp-route-type="garage"><button class="btn btn-light btn-sm" style="width:49.9%;outline:none;float:right"><i class="fa fa-remove"></i>&nbsp;Remove</button></a>
+                            }
+                        </div>
+                        <div class="mobOptions">
+                            <a asp-controller="Garage" asp-action="Delete" asp-route-id="@item.Id" asp-route-type="garage"><button class="btn btn-light" style="width:100%;outline:none;"><i class="fa fa-remove"></i>&nbsp;Remove</button></a>
+                        </div>
+                    </td>
+                </tr>
+             </table>
+        </a>
+
+        if (counter % 2 == 0)
+        {
+            <div class="Wedge" style="height:150px;float:left;margin-top:25px"></div>
+        }
+
+        counter++;
+    }
+
+    <table style="width:100%;height:50px;"></table>
+
+    @if(ViewBag.filtCount < 3)
+    {
+        <table style="width:100%;height:500px;"></table>
+    }
+</div>
+

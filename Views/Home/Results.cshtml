@@ -1,0 +1,15 @@
+﻿@model IEnumerable<AUTO_ARCHIVE.Models.Auto>
+@using AUTO_ARCHIVE.Models
+@using System.Linq
+@using MoreLinq;
+@using System;
+@using System.Collections.Generic;
+
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @await Html.PartialAsync("SearchResults")
+</div>

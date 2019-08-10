@@ -1,0 +1,53 @@
+﻿<style>
+    .modal-backdrop {
+        z-index: -10;
+    }
+</style>
+
+
+<div id="webLoginPartial">
+    @if (User.Identity.IsAuthenticated)
+    {
+        ViewBag.Name = User.Claims.FirstOrDefault(c => c.Type.Equals("cognito:username")).Value;
+
+        <div class="dropdown btn-group" role="group" id="profile" style="float:right;">
+            @if (@ViewBag.cartCount != 0)
+            {
+                <a asp-area="" asp-controller="Garage" asp-action="Index" id="garlink"><button class="btn btn-dark" type="button" style="border-radius:25px 0px 0px 25px;background-color:#303030;border-color:#303030;" id="garbtn">My Garage<i class="badge badge-light" style="margin-left:3px">@ViewBag.cartCount</i></button></a>
+            }
+            else
+            {
+                <a asp-area="" asp-controller="Garage" asp-action="Index" id="garlink"><button class="btn btn-dark" type="button" style="border-radius:25px 0px 0px 25px;background-color:#303030;border-color:#303030;" id="garbtn">My Garage<i class="badge badge-light" style="margin-left:3px">0</i></button></a>
+            }
+            <div class="btn-group">
+                <button type="button" class="btn btn-dark dropdown-toggle" style="border-radius:0px 25px 25px 0px;background-color:#303030;border-color:#303030;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    My Account
+                </button>
+                <div id="AcctMenu" class="dropdown-menu dropdown-menu-right" style="background-color:#303030;outline:none;border-radius:0px 0px 25px 25px;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                    <button id="profBtn" class="dropdown-item" type="button" style="text-align:center;color:white" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'"><i class="fa fa-user"></i>&nbsp;Profile</button>
+                    @if(((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "ca-central-1_PcdhdvUaa_KnctID"))
+                    {
+                        <a href="https://autokonnect.awsapps.com/mail" target="_blank" style="text-decoration:none;"><button class="dropdown-item" type="button" style="text-align:center;color:white" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'"><i class="fa fa-envelope"></i>&nbsp;Email</button></a>
+                    }
+                    else
+                    {
+                        <button id="contactBtn" class="dropdown-item" type="button" style="text-align:center;color:white" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'"><i class="fa fa-envelope"></i>&nbsp;Contact Us</button>
+                    }
+
+                    @if (((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Admin") || ((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Data") || ((System.Security.Claims.ClaimsIdentity)User.Identity).HasClaim("cognito:groups", "Developer"))
+                    {
+                        <button id="uploadBtn" class="dropdown-item" type="button" style="text-align:center;color:white" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'"><i class="fa fa-upload"></i>&nbsp;Upload</button>
+                    }
+                    <button id="logoutBtn" class="dropdown-item" type="button" style="text-align:center;color:white" onMouseOver="this.style.color='black'" onMouseOut="this.style.color='white'"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</button>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="nav navbar-nav navbar-right">
+            <a href="https://exade-it.auth.ca-central-1.amazoncognito.com/login?client_id=75h5pk3tvnf885f582mdvm5pg3&redirect_uri=https%3A%2F%2Fscarfbeta.azurewebsites.net%2Fsignin-oidc&response_type=code&scope=openid%20profile&response_mode=form_post"><button class="btn btn-primary" type="button" style="outline:none;border-radius:25px">Sign In / Register</button></a>
+        </div>
+    }
+</div>
+

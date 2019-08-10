@@ -1,0 +1,152 @@
+﻿<div id="webAnalyticResults">
+    @{
+        var counter = 0;
+    }
+
+    @foreach (var item in Model.ListGarage)
+    {
+        <table class="tableResults" height="150" style="border-radius:5px;background-color:white;box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);margin-top:25px;margin-bottom:25px" cellpadding="2">
+            <tr>
+                <td class="title" colspan="3">
+                    <div style="text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:350px">
+                        <span><b>@item.Year @item.Model</b></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="images">
+                    <div>
+                        @if (item.FirstImage != null)
+                        {
+                            <i class="fas fa-camera" style="color:white;position:absolute;background-color:gray;width:30px;height:16px;text-align:center;"></i>
+                            <img class="myImg responsive"
+                                 src="data:image/jpg;base64,@(Convert.ToBase64String(item.FirstImage))"
+                                 style="width:100%;height:100%;" />
+
+                            if (item.SecondImage != null)
+                            {
+                                <img class="scndImg responsive"
+                                     src="data:image/jpg;base64,@(Convert.ToBase64String(item.SecondImage))"
+                                     style="width:100%;height:100%;display:none" />
+                            }
+
+                            if (item.ThirdImage != null)
+                            {
+                                <img class="thrdImg responsive"
+                                     src="data:image/jpg;base64,@(Convert.ToBase64String(item.ThirdImage))"
+                                     style="width:100%;height:100%;display:none" />
+                            }
+
+                            if (item.FourthImage != null)
+                            {
+                                <img class="frthImg responsive"
+                                     src="data:image/jpg;base64,@(Convert.ToBase64String(item.FourthImage))"
+                                     style="width:100%;height:100%;display:none" />
+                            }
+
+                            if (item.FifthImage != null)
+                            {
+                                <img class="fithImg responsive"
+                                     src="data:image/jpg;base64,@(Convert.ToBase64String(item.FifthImage))"
+                                     style="width:100%;height:100%;display:none" />
+                            }
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal col-md-12">
+                            <!-- The Close Button -->
+                            <span class="close" style="margin-top:10px" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+
+                            <img class="col-md-12" id="img00" style="width:50%;height:65%;margin-left:25%;" />
+
+                            <div style="width:100%;margin-top:20px;">
+                                <!-- Modal Content (The Image) -->
+                                <a href="#"><img class="modal-content col-md-12" id="img01" style="margin-bottom:30px;background-color:transparent;" /></a>
+
+                                @if (item.SecondImage != null)
+                                {
+                                    <a href="#"><img class="modal-content col-md-12" id="img02" style="margin-bottom:30px;background-color:transparent;" /></a>
+                                }
+
+                                @if (item.ThirdImage != null)
+                                {
+                                    <a href="#"><img class="modal-content col-md-12" id="img03" style="margin-bottom:30px;background-color:transparent;" /></a>
+                                }
+
+                                @if (item.FourthImage != null)
+                                {
+                                    <a href="#"><img class="modal-content col-md-12" id="img04" style="margin-bottom:30px;background-color:transparent;" /></a>
+                                }
+
+                                @if (item.FifthImage != null)
+                                {
+                                    <a href="#"><img class="modal-content col-md-12" id="img05" style="margin-bottom:30px;background-color:transparent;" /></a>
+                                }
+                            </div>
+                        </div>
+                        }
+                        else
+                        {
+                        <img class="responsive"
+                             src="https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+                             style="width:75%;height:75%;margin-left:12.5%;" />
+                        }
+                    </div>
+                </td>
+                <td class="details1">
+                    <span style="color:#7c7c7c">VIN</span>
+                    <span style="display:block"><b>@item.Vin</b></span>
+
+                    <span style="color:#7c7c7c;margin-left:10px">CYL</span>
+                    <span style="display:block"><b>@item.Cyl</b></span>
+
+                    <span style="color:#7c7c7c;margin-left:10px">Status</span>
+                    <span style="display:block"><b>@item.Status</b></span>
+                </td>
+                <td class="details2">
+                    @if (item.BidAmountC != null)
+                    {
+                        <span style="display:block;width:100%">
+                            <span style="color:#7c7c7c;">Final Bid</span>
+                            <span style="color:green;display:block;"><b>C$@item.BidAmountC</b></span>
+                        </span>
+                    }
+                    else
+                    {
+                        <span style="color:#7c7c7c;">Final Bid</span>
+                        <span style="display:block"><b>Pending</b></span>
+                    }
+
+                    <span style="color:#7c7c7c;display:block;">Mileage</span>
+                    <span style="display:block"><b>@item.MileageKm km</b></span>
+
+                    @if (item.BidAmountC != null)
+                    {
+                        <span class="auctDate" style="color:#7c7c7c;">Date Sold</span>
+                    }
+                    else
+                    {
+                        <span class="auctDate" style="color:#7c7c7c;">Date</span>
+                    }
+                    <span style="display:block"><b>@item.AuctionDate</b></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div class="webOptions">
+                        <a asp-controller="Garage" asp-action="addToGarage" asp-route-id="@item.Id"><button class="btn btn-light btn-sm" style="width:100%;outline:none;"><i class="fa fa-plus"></i>&nbsp;Add To Garage</button></a>
+                    </div>
+                    <div class="mobOptions">
+                        <a asp-controller="Garage" asp-action="addToGarage" asp-route-id="@item.Id"><button class="btn btn-light" style="width:100%;outline:none;"><i class="fa fa-plus"></i>&nbsp;Add To Garage</button></a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        if (counter % 2 == 0)
+        {
+            <div class="Wedge" style="height:150px;float:left;margin-top:25px"></div>
+        }
+
+        counter++;
+    }
+</div>

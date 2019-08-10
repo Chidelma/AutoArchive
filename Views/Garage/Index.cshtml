@@ -1,0 +1,34 @@
+﻿@model AUTO_ARCHIVE.Models.AutoGarage
+
+@{
+    ViewData["Title"] = "My Garage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="webFilterHeader">
+    <form method="get" asp-controller="garage" asp-action="index">
+        @await Html.PartialAsync("FilterHeader")
+    </form>
+</div>
+
+<div id="webCompare" style="padding-top:20px">
+    @await Html.PartialAsync("Compare")
+</div>
+
+<div id="mobFilterHeader" style="padding-top:10px;">
+    <form method="get" asp-controller="garage" asp-action="index">
+        @await Html.PartialAsync("mobFilterHeader")
+    </form>
+</div>
+
+@if (ViewBag.cartCount == 0)
+{
+    <div class="container">
+        <p style="text-align:center;font-size:x-large;margin-top:100px">There are no vehicles in your Garage</p>
+    </div>
+}
+else
+{
+    @await Html.PartialAsync("FilterResults")
+}
+

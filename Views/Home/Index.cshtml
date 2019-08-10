@@ -1,8 +1,19 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿
+@{
+    ViewData["Title"] = "Sign In";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="indexPage" style="background-color:#303030;height:100%;width:100%;position:absolute;top:0;left:0;">
+    <div style="margin:auto;position:absolute;top:0;bottom:0;left:0;right:0;width:200px;height:250px;">
+
+        <img src="~/Images/HEADER_LOGO.png" />
+
+        <table align="center" style="margin-top:20px">
+            <tr>
+                <td>
+                    <a asp-controller="Home" asp-action="Results"><button class="btn btn-dark">Sign In / Register</button></a>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

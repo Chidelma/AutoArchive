@@ -1,0 +1,21 @@
+﻿@media screen and (max-width: 4096px) {
+
+    #mobFilterHeader {
+        display:none;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+
+    #webFilterHeader {
+        display: none;
+    }
+
+    #mobFilterHeader {
+        display: block;
+    }
+
+    #webCompare {
+        display:none;
+    }
+}
