@@ -1,4 +1,4 @@
-# Auto-Archive
+# Auto Archive
 Largest database for auctioned automobiles
 
 ### Platforms
